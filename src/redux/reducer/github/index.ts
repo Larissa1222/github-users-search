@@ -10,9 +10,17 @@ interface IGithubInitialState {
 }
 
 export interface IUser{
-  user: any;
-  login: string;
-  avatar_url: string;
+  // users: Array <{
+  //   login: string;
+  //   avatar_url: string;
+  // }>
+  user: Array<{
+    gituser: any;
+    login: string;
+    avatar_url: string;
+    id: number;
+
+  }>
 }
 
 
@@ -59,7 +67,7 @@ export function getGithubUser(query: string){
       const response = await fetch(`https://api.github.com/search/users?q=${query}`);
       const json = await response.json();
 
-      const user = json.items[0];
+      const user = json.items;
       // const user = json.slice(0,10);
   
       dispatch(getGithubUserSucess(user));

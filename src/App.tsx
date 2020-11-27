@@ -13,8 +13,8 @@ const store = CreateStore();
 function App() {
   return (
     <ReactRedux.Provider store={store}>
-      <Nav></Nav>
-      <Result></Result>
+      <Nav/>
+      <Result/>
     </ReactRedux.Provider>
   );
 }
