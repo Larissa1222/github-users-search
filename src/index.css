@@ -1,13 +1,114 @@
-body {
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap");
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body,
+html {
+  font: 16px "Montserrat", sans-serif;
+  scroll-behavior: smooth;
+  color: black;
 }
+/*NAV*/
+.navbar{
+  display: flex;
+  flex-direction: column;
+  background-color: #f7f7f7;
+  height: 170px;
+  padding: 20px 20px;
+}
+
+/*TITLE*/
+.navbar > .title{
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  font-size: 25px;
+  text-transform: capitalize;
+  margin: 10px;
+}
+
+/*DESCRIPTION*/
+.navbar > .description{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  font-size: 15px;
+  margin: 5px;
+}
+.description > .bold{
+  font-weight: bolder;
+  margin-left: 5px;
+}
+
+/*SEARCH*/
+.navbar > .search{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  margin: 10px;
+}
+.search button{
+  margin: 0 2px;
+  padding: 4px;
+}
+.search input{
+  width: 200px;
+  font: 13px "Montserrat", sans-serif;
+  padding: 6px;
+}
+
+/*RESULT AREA*/
+.result{
+  display: flex;
+  flex-direction: row;
+  align-content: space-around;
+  margin: 20px;
+}
+.result-user{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  border: 1px solid;
+  border-radius: 2px;
+  width: 200px;
+  margin: 10px;
+  padding: 5px;
+}
+.user-image{
+  align-content: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 2px;
+  margin-right: 5px;
+}
+
+
+/*SVG IMAGES*/
+.github-svg{
+  width: 35px;
+  height: 30px;
+  margin: 0px 4px;
+}
+.search-svg{
+  width: 20px;
+  height: 20px;
+  margin: 0px 4px;
+}
+
+@media (max-width: 599px) {
+  .navbar{
+    width: 100%;
+  }
+  .navbar > .description{
+    flex-direction: row;
+  }
+  .result{
+    flex-direction: column;
+    margin: 10px;
+  }
+} 
