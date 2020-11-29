@@ -1,24 +1,24 @@
 import React from 'react';
-import '../../../../../heroway-git/src/index.css';
-import { IUser } from '../../../redux/reducer/github';
+// import '../../../../../heroway-git/src/css/index.css';
 
-
-interface Cards{
-  user: IUser['user'],
+//interface to receive props from Result component
+interface ICards{
+  login: string;
+  id: number;
+  avatar_url: string;
 }
-function Card(props: Cards){
+function Card(props: ICards){
   return (
     <>
-      {props.user.map((gituser) =>{
-        return(
-          <div className="result-user" key={props.user['id']}>
-          <img 
-            src={props.user['avatar_url']} 
-            className="user-image" />
-          <p className="user-name">{props.user['login']}</p> 
-        </div>
-        );})
-      }
+      <div className="result-user" key={props.id}>
+        <img 
+          className="user-image" 
+          src={props.avatar_url} 
+          alt={props.login}
+          title={props.login}
+          />
+        <p className="user-name">{props.login}</p> 
+      </div>
     </>
   );
 }

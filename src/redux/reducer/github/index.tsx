@@ -6,44 +6,37 @@ interface IGithubInitialState {
   loading: boolean;
   error: boolean;
   errorMessage: string;
-  user: IUser;
+
+  users: any;
+  gituser: string;
 }
-
-export interface IUser{
-  // users: Array <{
-  //   login: string;
-  //   avatar_url: string;
-  // }>
-  user: Array<{
-    gituser: any;
-    login: string;
-    avatar_url: string;
-    id: number;
-
-  }>
-}
-
 
 const GITHUB_INITIAL_STATE: IGithubInitialState  = {
   loading: false,
   error: false,
   errorMessage: null,
-  user: null
-}
+
+  users:[],
+  gituser: " ",
+};
 
 //REDUCER
 export default function githubReducer(state = GITHUB_INITIAL_STATE, action: any): IGithubInitialState{
+
   switch(action.type){
+
     case GET_GITHUB_USER_LOADING:
       return{
-        ...GITHUB_INITIAL_STATE,//pq ai n precisa alterar tudo sempre
-        loading: true,
+        ...GITHUB_INITIAL_STATE,  
+        loading: true, 
       };
 
     case GET_GITHUB_USER_SUCESS:
       return{
         ...GITHUB_INITIAL_STATE,
-        user: action.payload.user,
+        users: action.payload.users,
+        gituser: action.payload.gituser,
+
         errorMessage: action.payload.errorMessage,
       };
 
@@ -51,6 +44,7 @@ export default function githubReducer(state = GITHUB_INITIAL_STATE, action: any)
       return{
         ...GITHUB_INITIAL_STATE,
         error: true,
+        errorMessage: action.errorMessage,
       };
 
     default:
@@ -64,13 +58,14 @@ export function getGithubUser(query: string){
     dispatch(getGithubUserLoading());
 
     try {
-      const response = await fetch(`https://api.github.com/search/users?q=${query}`);
+      const url = `https://api.github.com/search/users?q=${query}`;
+
+      const response = await fetch(url);
       const json = await response.json();
 
-      const user = json.items;
-      // const user = json.slice(0,10);
+      const users = json.items;
   
-      dispatch(getGithubUserSucess(user));
+      dispatch(getGithubUserSucess(users));
       
     } catch (e) {
         console.error(e);
@@ -84,17 +79,18 @@ function getGithubUserLoading(){
     type: GET_GITHUB_USER_LOADING,
   }
 }
-function getGithubUserSucess(user){
+function getGithubUserSucess(users){
   return{
     type: GET_GITHUB_USER_SUCESS, 
     payload: {
-      user,
-      errorMessage: !user ?'Usuário não encontrado': null
+      users,
+      gituser: '',
     }
   }
 }
 function getGithubUserFail(){
   return{
     type: GET_GITHUB_USER_FAIL,
+    errorMessage: 'Something is wrong, try again later',
   }
 }
