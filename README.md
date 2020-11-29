@@ -1,4 +1,21 @@
-# Getting Started with Create React App
+# Github Users Search
+> *This application uses Github API for search users*
+
+## Access this application
+* [Open in your browser] 
+
+## Tech:
+- Typescript
+- React
+- Redux
+- HTML5 
+- CSS3
+
+* [Visual Studio Code] - Code editor 
+* [EditorConfig] - File format
+
+
+# Or run this project in your local machine:
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -44,3 +61,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+[Visual Studio Code]: <https://code.visualstudio.com/>
+[EditorConfig]: <https://editorconfig.org/>
+[Open in your browser]: <https://larissa1222-git-search-users.netlify.app/>
